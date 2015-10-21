@@ -117,7 +117,7 @@ public class User {
     /**
      * The class of the main char of the User
      */
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "id_class")
     @NotNull
     @Valid

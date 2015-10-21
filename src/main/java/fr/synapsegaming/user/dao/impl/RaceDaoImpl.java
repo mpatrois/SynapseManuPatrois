@@ -24,7 +24,8 @@ public class RaceDaoImpl extends AbstractDao<Race, Long> implements RaceDao {
 		Session session = this.getSession();
         try {
         	
-            Query query = session.createSQLQuery("SELECT races.* FROM users INNER JOIN races ON races.id_race = users.id_race GROUP BY id_race ORDER BY COUNT( * ) DESC ").addEntity(Race.class);
+        	Query query = session.createQuery("from Race r order by size(r.users) desc");
+//            Query query = session.createSQLQuery("SELECT races.* FROM users INNER JOIN races ON races.id_race = users.id_race GROUP BY id_race ORDER BY COUNT( * ) DESC ").addEntity(Race.class);
             query.setMaxResults(nbRace);
             return query.list();
         } catch (Exception e) {

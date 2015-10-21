@@ -49,8 +49,8 @@ implements SpecializationDao {
 	public List<Specialization> getSpecializationMostPlayed(int nbSpecialization) {
 		Session session = this.getSession();
         try {
-        	
-            Query query = session.createSQLQuery("SELECT specializations.* FROM users INNER JOIN specializations ON specializations.id_spec = users.id_spec GROUP BY id_spec ORDER BY COUNT( * ) DESC ").addEntity(Specialization.class);
+        	Query query = session.createQuery("from Specialization s order by size(s.users) desc");
+//            Query query = session.createSQLQuery("SELECT specializations.* FROM users INNER JOIN specializations ON specializations.id_spec = users.id_spec GROUP BY id_spec ORDER BY COUNT( * ) DESC ").addEntity(Specialization.class);
             query.setMaxResults(nbSpecialization);
             return query.list();
         } catch (Exception e) {

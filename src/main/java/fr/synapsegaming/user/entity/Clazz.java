@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
@@ -62,8 +63,9 @@ public class Clazz {
     /**
      * Users playing this class
      */
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_class")
+    @OneToMany(mappedBy = "clazz")
+    
+//    @JoinColumn(name = "id_class")
     private List<User> users;
 
     public long getId() {
@@ -113,5 +115,4 @@ public class Clazz {
     public void setImg(String img) {
         this.img = img;
     }
-
 }

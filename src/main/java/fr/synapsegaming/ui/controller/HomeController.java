@@ -14,7 +14,7 @@ import fr.synapsegaming.media.service.ArticleService;
 import fr.synapsegaming.media.service.VideoService;
 import fr.synapsegaming.raid.entity.Patch;
 import fr.synapsegaming.raid.service.PatchService;
-import fr.synapsegaming.stats.StatService;
+import fr.synapsegaming.stats.service.StatsService;
 import fr.synapsegaming.ui.service.ResourceService;
 import fr.synapsegaming.user.entity.User;
 import fr.synapsegaming.user.service.ClazzService;
@@ -47,8 +47,7 @@ public class HomeController extends AbstractController {
     @Autowired
     private ClazzService clazzService;
     
-    @Autowired
-    private StatService statService;
+  
 
 
     /**
@@ -96,23 +95,6 @@ public class HomeController extends AbstractController {
     public ModelAndView legals() {
         page = new ModelAndView("Legals");
         page.addObject(PROMS_HTTP_ATTRIBUTE, articleService.getFiveLastProms());
-        return page;
-    }
-    
-    /**
-     * Route to the Legals Page
-     * 
-     * @return Legals Page
-     */
-    @RequestMapping(value = "/stats", method = RequestMethod.GET)
-    public ModelAndView stats() {
-        page = new ModelAndView("Stats");
-        page.addObject(PROMS_HTTP_ATTRIBUTE, articleService.getFiveLastProms());
-        page.addObject("userWithoutAvatar",statService.getUsersWithoutAvatar());
-        page.addObject("fiveClazzMostPlayed",statService.getFiveClazzMostPlayed());
-        page.addObject("fiveRaceMostPlayed",statService.getFiveRaceMostPlayed());
-        page.addObject("fiveSpecializationMostPlayed",statService.getFiveSpecializationMostPlayed());
-        page.addObject("fiveUserMostActive",statService.getFiveUsersMostActive());
         return page;
     }
     
