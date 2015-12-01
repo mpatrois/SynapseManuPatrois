@@ -47,8 +47,8 @@ public class HomeController extends AbstractController {
     @Autowired
     private ClazzService clazzService;
     
-  
-
+    @Autowired
+    private StatsService statService;
 
     /**
      * The default constructor to initialize the page
@@ -97,5 +97,4 @@ public class HomeController extends AbstractController {
         page.addObject(PROMS_HTTP_ATTRIBUTE, articleService.getFiveLastProms());
         return page;
     }
-    
 }
