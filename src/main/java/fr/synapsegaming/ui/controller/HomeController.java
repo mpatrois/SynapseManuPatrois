@@ -46,9 +46,6 @@ public class HomeController extends AbstractController {
 
     @Autowired
     private ClazzService clazzService;
-    
-    @Autowired
-    private StatsService statService;
 
     /**
      * The default constructor to initialize the page
