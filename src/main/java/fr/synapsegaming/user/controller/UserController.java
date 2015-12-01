@@ -2,6 +2,7 @@ package fr.synapsegaming.user.controller;
 
 import java.io.UnsupportedEncodingException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -230,7 +231,8 @@ public class UserController extends AbstractController {
      *            : the password associated to this email
      * @return a ModelAndView
      */
-    @RequestMapping(value = "/signin", method = RequestMethod.POST)
+    @SuppressWarnings("deprecation")
+	@RequestMapping(value = "/signin", method = RequestMethod.POST)
     public ModelAndView signin(@ModelAttribute("mail") String mail, @ModelAttribute("password") String password) {
         User user = userService.findByMail(mail);
         String checkResult = userService.userCanSignin(password, user);
@@ -244,6 +246,8 @@ public class UserController extends AbstractController {
             page.setViewName("Home");
             page.addObject("user", user);
             this.user = user;
+             //session.putValue("user", user.getName());
+            
             page.addObject("userResources", resourceService.listUserRestrictedResources(user.getGroup().getId()));
             page.addObject("patch", patchService.getLastPatch());
             page.addObject(CLASSES_HTTP_ATTRIBUTE, clazzService.list());

@@ -46,7 +46,7 @@
 		<h3>Statistiques</h3>
 		<h4>Top 5 des classes les plus jouées</h4>
 			<c:forEach items="${fiveClazzMostPlayed}" var="clazz">
-			<div>${ clazz.getName() }	</div>
+			<div>${ clazz.name }	</div>
 		</c:forEach>
 		<h4>Top 5 des races les plus jouées</h4>
 		<c:forEach items="${fiveRaceMostPlayed}" var="race">

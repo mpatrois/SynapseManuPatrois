@@ -46,10 +46,7 @@ public class ClazzDaoImpl extends AbstractDao<Clazz, Long> implements ClazzDao {
     
     @SuppressWarnings("unchecked")
 	@Override
-	public List<Clazz> listClassMostPlayed(int nbClazz) {
-    	
-    	
-    	
+	public List<Clazz> listClassMostPlayed(int nbClazz) {  	
 		Session session = this.getSession();
         try {
             Query query = session.createQuery("from Clazz c order by size(c.users) desc");
