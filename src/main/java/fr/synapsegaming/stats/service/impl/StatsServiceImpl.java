@@ -23,6 +23,7 @@ import fr.synapsegaming.user.entity.User;
 @Transactional
 public class StatsServiceImpl implements StatsService{
 
+	 private static final int TOP_5 = 5;
 	 private static final Logger LOGGER = Logger
 	            .getLogger(ArticleServiceImpl.class);
 
@@ -41,17 +42,17 @@ public class StatsServiceImpl implements StatsService{
 	@Override
 	public List<Clazz> getFiveClazzMostPlayed() {
 		// TODO Auto-generated method stub
-		return clazzDao.listClassMostPlayed(5);
+		return clazzDao.listClassMostPlayed(TOP_5);
 	}
 
 	@Override
 	public List<Race> getFiveRaceMostPlayed() {
-		return raceDao.listRaceMostPlayed(5);
+		return raceDao.listRaceMostPlayed(TOP_5);
 	}
 
 	@Override
 	public List<Specialization> getFiveSpecializationMostPlayed() {
-		return specificazionDao.getSpecializationMostPlayed(5);
+		return specificazionDao.getSpecializationMostPlayed(TOP_5);
 	}
 
 	@Override
@@ -61,8 +62,7 @@ public class StatsServiceImpl implements StatsService{
 
 	@Override
 	public List<User> getFiveUsersMostActive() {
-		return userDao.listUsersMostActive(5);
-//		return null;
+		return userDao.listUsersMostActive(TOP_5);
 	}
 
 }

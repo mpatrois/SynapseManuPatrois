@@ -1,11 +1,13 @@
 package fr.synapsegaming.stats.service;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.synapsegaming.commons.service.AbstractServiceTest;
+import junit.framework.Assert;
 
 public class StatsServiceTest extends AbstractServiceTest {
 	
@@ -16,26 +18,27 @@ public class StatsServiceTest extends AbstractServiceTest {
 	
 	@Test
     public void testGetFiveClazzMostPlayed() {
-		assertTrue(statsService.getFiveClazzMostPlayed().size() == TOP_5);
+		assertEquals(statsService.getFiveClazzMostPlayed().size(), TOP_5);
     }
 	
 	@Test
     public void testGetFiveRaceMostPlayed() {
-		assertTrue(statsService.getFiveRaceMostPlayed().size() == TOP_5);
+		assertEquals(statsService.getFiveRaceMostPlayed().size(), TOP_5);
     }
+	
 	
 	@Test
     public void testGetSpecializationMostPlayed() {
-		assertTrue(statsService.getFiveSpecializationMostPlayed().size() == TOP_5);
+		assertEquals(statsService.getFiveSpecializationMostPlayed().size(), TOP_5);
     }
 	
 	@Test
     public void testGetUsersWithoutAvatar() {
 		assertTrue(CollectionUtils.isNotEmpty(statsService.getUsersWithoutAvatar()));
-    }
+	}
 	
 	@Test
     public void testGetFiveUsersMostActive() {
-		assertTrue(statsService.getFiveUsersMostActive().size() == TOP_5);
+		assertEquals(statsService.getFiveUsersMostActive().size(), TOP_5);
     }
 }

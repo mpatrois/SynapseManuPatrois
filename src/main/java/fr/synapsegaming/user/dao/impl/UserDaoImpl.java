@@ -70,7 +70,7 @@ public class UserDaoImpl extends AbstractDao<User, Long> implements UserDao {
 	public List<User> listUsersMostActive(int nbUser) {
 		Session session = this.getSession();
         try {
-            Query query = session.createSQLQuery("SELECT users.* FROM users INNER JOIN f_posts ON f_posts.id_user = users.id_user INNER JOIN f_replies on f_replies.id_user=users.id_user  GROUP BY id_user ORDER BY COUNT( * ) DESC ").addEntity(User.class);
+            Query query = session.createSQLQuery("SELECT users.* FROM users LEFT JOIN f_posts ON f_posts.id_user = users.id_user LEFT JOIN f_replies on f_replies.id_user=users.id_user  GROUP BY id_user ORDER BY COUNT( * ) DESC ").addEntity(User.class);
             query.setMaxResults(nbUser);
             return query.list();
         } catch (Exception e) {

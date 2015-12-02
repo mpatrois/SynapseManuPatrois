@@ -62,7 +62,7 @@
 		</c:forEach>
 		<h4>Les 5 membres les plus actifs socialement</h4>
 		<c:forEach items="${fiveUserMostActive}" var="user">
-			<div>${ user.nickname }	</div>
+			<div>${ user.name }	</div>
 		</c:forEach>
 		
 	</div>
