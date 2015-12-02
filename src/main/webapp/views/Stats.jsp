@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/achievement.css" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/recruitment.css" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/footer.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/stats.css" />">
     <!-- JS -->
     <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.0.3.js" />"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/menu.js" />"></script>
@@ -39,32 +40,46 @@
 	<div id="news-wrapper">
 		<jsp:include page="portal/News.jsp"/>
 	</div>
-<!-- 	<div id="videos-wrapper"> -->
-<%-- 		<jsp:include page="portal/Videos.jsp"/> --%>
-<!-- 	</div> -->
 	<div id="middle-wrapper">
-		<h3>Statistiques</h3>
-		<h4>Top 5 des classes les plus jouées</h4>
-			<c:forEach items="${fiveClazzMostPlayed}" var="clazz">
-			<div>${ clazz.name }	</div>
-		</c:forEach>
-		<h4>Top 5 des races les plus jouées</h4>
-		<c:forEach items="${fiveRaceMostPlayed}" var="race">
-			<div>${ race.name }	</div>
-		</c:forEach>
-		<h4>Top 5 des spécialisations jouées</h4>
-		<c:forEach items="${fiveSpecializationMostPlayed}" var="specialization">
-			<div>${ specialization.name }	</div>
-		</c:forEach>
-		<h4>La liste des utilisateurs sans avatar (avec l'avatar par défaut)</h4>
-		<c:forEach items="${userWithoutAvatar}" var="user">
-			<div>${ user.nickname }	</div>
-		</c:forEach>
-		<h4>Les 5 membres les plus actifs socialement</h4>
-		<c:forEach items="${fiveUserMostActive}" var="user">
-			<div>${ user.name }	</div>
-		</c:forEach>
-		
+		<div id="stats-container">
+			<h3>
+				<span>Statistiques</span>
+			</h3>
+				<div id="stats_1">
+					<h4>Top 5 des classes les plus jouées</h4>
+					<c:forEach items="${fiveClazzMostPlayed}" var="clazz">
+					<img src="..${clazz.img}" title="${clazz.name}">
+					<div>${clazz.name}</div>
+				</c:forEach>
+				</div>
+				<div id="stats_2">
+					<h4>Top 5 des races les plus jouées</h4>
+					<c:forEach items="${fiveRaceMostPlayed}" var="race">
+						<div>${race.name}</div>
+					</c:forEach>
+				</div>
+				<div id="stats_3">
+					<h4>Top 5 des spécialisations jouées</h4>
+					<c:forEach items="${fiveSpecializationMostPlayed}" var="specialization">
+						<div class="spec"><img src="..${specialization.img}" title="${specialization.name}"></div>
+						<div>${specialization.name}</div>
+					</c:forEach>
+				</div>
+				<div id="stats_4">
+					<h4>La liste des utilisateurs sans avatar </br>(avec l'avatar par défaut)</h4>
+					<c:forEach items="${userWithoutAvatar}" var="user">
+						<div>${ user.nickname }	</div>
+					</c:forEach>
+				</div>
+				<div id="stats_5">
+					<h4>Les 5 membres les plus actifs socialement</h4>
+					<c:forEach items="${fiveUserMostActive}" var="user">
+						<img src="${user.getForumAvatar()}" title="${user.nickname}"></br>
+						<div>${user.surname} '<i>${user.nickname}</i>' ${user.name}</div>
+						</br>
+					</c:forEach>
+				</div>
+		</div>
 	</div>
 	<div id="footer-wrapper">
 		<jsp:include page="portal/Footer.jsp"/>
